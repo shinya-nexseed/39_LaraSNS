@@ -1,0 +1,31 @@
+feedsテーブルを例に各命名規則
+
+Controller名（複数形）
+FeedsController
+
+Model名（単数形）
+Feed
+
+View名（テーブル名ディレクトリ）
+feeds/アクションメソッド名.blade.php
+
+各アクションと対応するRequest
+
+Create
+
+Read
+  index : /feeds
+  show : /feeds/1
+
+Update
+
+Delete
+
+
+
+
+
+
+
+
+

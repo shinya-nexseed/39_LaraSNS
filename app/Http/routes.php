@@ -17,6 +17,15 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('/greeting', 'WelcomeController@greeting');
 
+Route::get('/contact', 'PagesController@contact');
+
+Route::get('/about', 'PagesController@about');
+
+// feedsリソース
+Route::get('/feeds', 'FeedsController@index');
+Route::get('/feeds/{id}', 'FeedsController@show');
+// {id} → $id = パラメータの値
+// $idをControllerのメソッドで使用可能（引数で渡す）
 
 
 
