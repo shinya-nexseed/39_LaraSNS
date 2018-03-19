@@ -23,10 +23,18 @@ Route::get('/about', 'PagesController@about');
 
 // feedsリソース
 Route::get('/feeds', 'FeedsController@index');
+Route::get('/feeds/create', 'FeedsController@create');
+Route::post('/feeds', 'FeedsController@store');
 Route::get('/feeds/{id}', 'FeedsController@show');
+Route::get('/feeds/{id}/edit', 'FeedsController@edit');
+Route::patch('/feeds/{id}', 'FeedsController@update');
+Route::delete('/feeds/{id}', 'FeedsController@destroy');
 // {id} → $id = パラメータの値
 // $idをControllerのメソッドで使用可能（引数で渡す）
 
+// patchメソッド
+// form側でinputタグを使いnameが_method、valueがPATCHの情報を送信することで偽装できる
+// フレームワークの機能のひとつ（RESTfulなURL設計をするために必要なもの）
 
 
 
