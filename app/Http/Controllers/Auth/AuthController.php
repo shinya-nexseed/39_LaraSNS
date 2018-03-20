@@ -22,6 +22,9 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers;
 
+    // register画面で登録後、どのURLへリダイレクトさせるか
+    protected $redirectTo = '/feeds';
+
     /**
      * Create a new authentication controller instance.
      *

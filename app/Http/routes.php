@@ -13,7 +13,7 @@
 
 // get method=getと同じ意味
 // ('リクエストURI', '対応するコントローラー@対応するメソッド');
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'FeedsController@index');
 
 Route::get('/greeting', 'WelcomeController@greeting');
 
@@ -35,6 +35,18 @@ Route::delete('/feeds/{id}', 'FeedsController@destroy');
 // patchメソッド
 // form側でinputタグを使いnameが_method、valueがPATCHの情報を送信することで偽装できる
 // フレームワークの機能のひとつ（RESTfulなURL設計をするために必要なもの）
+
+
+Route::get('/auth/login', 'Auth\AuthController@getLogin');
+Route::post('/auth/login', 'Auth\AuthController@postLogin');
+Route::get('/auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('/auth/register', 'Auth\AuthController@getRegister');
+Route::post('/auth/register', 'Auth\AuthController@postRegister');
+
+
+
+
 
 
 
