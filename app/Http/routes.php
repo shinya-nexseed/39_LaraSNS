@@ -37,6 +37,10 @@ Route::delete('/feeds/{id}', 'FeedsController@destroy');
 // フレームワークの機能のひとつ（RESTfulなURL設計をするために必要なもの）
 
 
+// My Feeds
+Route::get('/my_feeds', 'FeedsController@my_feeds');
+
+
 Route::get('/auth/login', 'Auth\AuthController@getLogin');
 Route::post('/auth/login', 'Auth\AuthController@postLogin');
 Route::get('/auth/logout', 'Auth\AuthController@getLogout');

@@ -32,4 +32,28 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    // $user->feeds()が使えるようになる
+    public function feeds() {
+        return $this->hasMany('App\Feed');
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

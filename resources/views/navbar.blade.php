@@ -6,7 +6,11 @@
     <div class="collapse navbar-collapse">
       {{-- メニュー --}}
       <ul class="nav navbar-nav">
-        <li><a href="/feeds">Feeds</a></li>
+        @if(Auth::guest())
+          <li><a href="/feeds">Feeds</a></li>
+        @else
+          <li><a href="/my_feeds">My feeds</a></li>
+        @endif
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @if (Auth::guest())

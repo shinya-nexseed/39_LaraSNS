@@ -58,6 +58,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        \Session::flash('create_register', 'ログインしました');
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

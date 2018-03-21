@@ -56,10 +56,13 @@ class FeedsController extends Controller
         
         // INSERT用のデータを配列で作成
         $data = ['feed' => $post_data['feed'],
-                 'user_id' => 1,
+                 'user_id' => \Auth::user()->id,
                  'created_at' => $now];
 
         Feed::create($data);
+        \Session::flash('create_feed', '作成しました');
+        // $_SESSION['create_feed'] = '作成しました';
+
         // $feed = Feed::create($data);
         // $feed->save();
         // INSERT INTO feeds SET feed=?, user_id=?, created_at=NOW();
@@ -96,8 +99,19 @@ class FeedsController extends Controller
         $feed = Feed::find($id);
         // delete()を実行
         $feed->delete();
+        // \Session::flash('キー', '表示メッセージ');
+        \Session::flash('delete_feed', '削除しました');
 
         return redirect('feeds');
+    }
+
+    public function my_feeds() {
+        // SELECT * FROM feeds WHERE user_id=? ORDER BY updated_at DESC
+        $user = \Auth::user();
+        $feeds = $user->feeds()->latest('updated_at')->get()->toArray();
+        // dd($feeds->get()->toArray());
+
+        return view('feeds.my_feeds', compact('feeds'));
     }
 }
 
