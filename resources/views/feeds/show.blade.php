@@ -11,6 +11,20 @@
   </form>
   <a href="/feeds">Timeline</a>
   <br>
+  <form method="POST" action="/feeds/like">
+    {{ csrf_field() }}
+    
+    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+    <input type="hidden" name="feed_id" value="{{ $feed['id'] }}">
+
+    @if($is_like == 0)
+      <input type="hidden" name="action" value="like">
+      <input type="submit" class="btn btn-default btn-xs" value="いいね">
+    @else
+      <input type="hidden" name="action" value="unlike">
+      <input type="submit" class="btn btn-info btn-xs" value="いいねを取り消す">
+    @endif
+  </form>
   <hr>
 @endsection
 

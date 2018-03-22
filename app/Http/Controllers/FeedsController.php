@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Feed;
 use Carbon\Carbon;
+use App\Like;
 
 class FeedsController extends Controller
 {
@@ -37,7 +38,11 @@ class FeedsController extends Controller
         $feed = Feed::find($id)->toArray();
         // SELECT * FROM feeds WHERE id=?
 
-        return view('feeds.show', compact('feed'));
+        $is_like = Like::where('user_id', \Auth::user()->id)->where('feed_id', $feed['id'])->count();
+        // SELECT COUNT(*) FROM likes WHERE user_id=? AND feed_id=?
+        // dd($is_like);
+
+        return view('feeds.show', compact('feed', 'is_like'));
     }
 
 
